@@ -4,46 +4,32 @@
     {
         static void Main(string[] args)
         {
-            TicketBooking ticketBooking = new TicketBooking();
-            ticketBooking.AddToQueue(new Customer { Name = "Mojidul", Age = 45 });
-            ticketBooking.AddToQueue(new Customer { Name = "Nayeem", Age = 13 });
-            ticketBooking.AddToQueue(new Customer { Name = "Sharmin", Age = 37 });
-            ticketBooking.AddToQueue(new Customer { Name = "Fatima", Age = 5 });
-            //Console.ReadKey(); 
-            ticketBooking.ShowQueue();
+            //https://medium.com/@kmorpex/10-advanced-c-tricks-for-experienced-developers-26a48c6a8c9c
+            //Leveraging Tuples for Multiple Return Values
+            TupleTest tupleTest = new TupleTest();
+            var tuple = tupleTest.Calculate(12, 13);
+            Console.WriteLine("Sum = "+tuple.sum+ "\nMultiple = " + tuple.prod);
 
-            //Console.ReadKey();
-            Console.WriteLine("Adding more customers to the queue");
-            ticketBooking.AddToQueue(new Customer { Name="Jahurul", Age=65});
-            ticketBooking.AddToQueue(new Customer { Name="Moriom", Age=58});
+            //Pattern Matching Enhancements(বর্ধিতকরণ)
+            Circle circle = new Circle();
+            ProcessShape(circle);
+            Square square = new Square();
+            ProcessShape(square);
 
-            Console.ReadKey();
-            ticketBooking.ShowQueue();
+        }
 
-            Console.ReadKey();
-            Console.WriteLine("Booking process started");
-            ticketBooking.ProcessBooking();
-
-            Console.ReadKey();
-            //https://www.youtube.com/watch?v=syqetzAkz-g
-
-            //Event Handler
-            //https://www.akadia.com/services/dotnet_delegates_and_events.html
-            // Create a new clock
-            Clock theClock = new Clock();
-
-            // Create the display and tell it to
-            // subscribe to the clock just created
-            DisplayClock dc = new DisplayClock();
-            dc.Subscribe(theClock);
-
-            // Create a Log object and tell it
-            // to subscribe to the clock
-            LogClock lc = new LogClock();
-            lc.Subscribe(theClock);
-
-            // Get the clock started
-            theClock.Run();
+        public static void ProcessShape(object shape)
+        {
+            if (shape is Circle c)
+            {
+                double radius = Convert.ToDouble(c.Radius);
+                Console.WriteLine($"Circle with radius: {radius}");
+            }
+            else if (shape is Square s)
+            {
+                double perimeter = Convert.ToDouble(s.Perimeter);
+                Console.WriteLine($"Square with side: {perimeter}");
+            }
         }
     }
 }
