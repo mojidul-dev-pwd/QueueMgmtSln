@@ -16,19 +16,23 @@
             Square square = new Square();
             ProcessShape(square);
 
+            Console.ReadKey();
+
         }
 
         public static void ProcessShape(object shape)
         {
             if (shape is Circle c)
             {
-                double radius = Convert.ToDouble(c.Radius);
-                Console.WriteLine($"Circle with radius: {radius}");
+                var d1 = c.Radius;
+                double radius = d1.Invoke();
+                Console.WriteLine($"Radius of Circle: {radius}");
             }
             else if (shape is Square s)
             {
-                double perimeter = Convert.ToDouble(s.Perimeter);
-                Console.WriteLine($"Square with side: {perimeter}");
+                var d2 = s.Perimeter;
+                double perimeter = d2.Invoke();
+                Console.WriteLine($"Perimeter of Square: {perimeter}");
             }
         }
     }

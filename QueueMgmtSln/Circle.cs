@@ -23,7 +23,7 @@ namespace QueueMgmtSln
         public double Perimeter()
         {
             double areaSqm = 36;
-            var side = areaSqm / 4;
+            var side = Math.Sqrt(areaSqm);
             var perimeter = 4* side;
             return perimeter;
         }
